@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+.leftNavButtons { 
+  width: 100%;
+  text-align: left;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: green; 
+}
+.leftNavButtons:active{background-color:yellow;}
+
+.formButtons { 
+  width: max-content;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: green; 
+}
+
+.tableRowSpace{
+  padding-bottom: 1em;
+}
+
+.label {
+  color: white;
+  font-family: Arial;
+}
+
+span.error {
+	color: red;
+	margin-left: 5px;
+}
