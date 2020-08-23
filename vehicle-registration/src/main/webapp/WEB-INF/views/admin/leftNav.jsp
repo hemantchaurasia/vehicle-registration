@@ -12,8 +12,8 @@
 	<table width="100%" height="100%">
 		<tr align="right">
 			<td valign="top">
-				<input type="submit" name="" value="Home" onclick="location.href='<%=request.getContextPath()%>/admin/searchRequest.jsp'" class="leftNavButtons"></br>
-				<input type="submit" name="" value="Logout" onclick="location.href='<%=request.getContextPath()%>/login.jsp'" class="leftNavButtons">
+				<input type="submit" name="" value="Home" onclick="location.href='${pageContext.request.contextPath}/login/'" class="leftNavButtons"></br>
+				<input type="submit" name="" value="Logout" onclick="location.href='${pageContext.request.contextPath}/login/'" class="leftNavButtons">
 			</td>
 		</tr>												
 	</table>

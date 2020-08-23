@@ -10,8 +10,7 @@
 	<title>Registration Form</title>
 </head>
 <body>
-Hi.. ${userID}</br>
-pw: ${password}
+Error: ${isErr}
 	<div align="center">
 		<!-- Main table -->
 		<table border = "1" width = "100%" height = "100%">
@@ -56,7 +55,7 @@ pw: ${password}
 							</td>
 						</tr>						
 						<!-- Form row of main table-->
-						<form action="<%=request.getContextPath()%>/registration" method="post">
+						<form action="${pageContext.request.contextPath}/newRegistration" method="post" name="registrationForm">
 						<tr>
 							<td>
 								<table>

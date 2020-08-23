@@ -1,4 +1,4 @@
-<%@page import="com.customer.RegistrationBean"%>
+<%@page import="com.vr.model.Registration"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page session="true" %>
@@ -32,7 +32,7 @@
 					</table>	
 						<!-- Error Column-->
 						<%
-							java.util.List<RegistrationBean> regList2 = (java.util.ArrayList<RegistrationBean>)session.getAttribute("registrationList"); 
+							java.util.List<Registration> regList2 = (java.util.ArrayList<Registration>)session.getAttribute("registrationList"); 
 						%>
 						<%
 							if(regList2==null){

@@ -18,16 +18,8 @@
 <body>
 	<div align="center">
 		<h1>Login</h1></br>
-		${ErrMsg}
-		<%
-			String showErr = "display:none";
-			if (null!=request.getParameter("isErr")) {
-				showErr = "";
-			}
-		%>
-		<div id="errors" style=<%=showErr%>>
-			<font color="red"><b>Invalid Input</b></font>
-		</div>
+		
+		<font color="red"><b>${ErrMsg}</b></font>
 
 		<form action="${pageContext.request.contextPath}/userLogin" method="post" name="loginForm">
 			<table style="with: 100%">

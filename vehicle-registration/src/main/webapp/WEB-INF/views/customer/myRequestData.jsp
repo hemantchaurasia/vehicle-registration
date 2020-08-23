@@ -1,4 +1,4 @@
-<%@page import="com.customer.RegistrationBean"%>
+<%@page import="com.vr.model.Registration"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ page session="true" %>
@@ -33,7 +33,7 @@
 		<tr align="center">
 			<td align="center">
 				<%
-					java.util.List<RegistrationBean> regList = (java.util.ArrayList<RegistrationBean>)session.getAttribute("registrationList"); 
+					java.util.List<Registration> regList = (java.util.ArrayList<Registration>)session.getAttribute("registrationList"); 
                 %>
 			</td>
 		</tr>
@@ -51,13 +51,13 @@
     <%
     for(int i=0; i<regList.size();i++){%>
         <tr>
-        	<td><%= ((RegistrationBean)regList.get(i)).getRequestId() %></td>
-       		<td><%= ((RegistrationBean)regList.get(i)).getName() %></td>
-            <td><%= ((RegistrationBean)regList.get(i)).getMake() %></td>
-            <td><%= ((RegistrationBean)regList.get(i)).getModel() %></td>
-            <td><%= ((RegistrationBean)regList.get(i)).getRTOOffice() %></td> 
-            <td><%= ((RegistrationBean)regList.get(i)).getPlateNumber() %></td> 
-            <td><%= ((RegistrationBean)regList.get(i)).getStatus() %></td> 
+        	<td><%= ((Registration)regList.get(i)).getRequestId() %></td>
+       		<td><%= ((Registration)regList.get(i)).getName() %></td>
+            <td><%= ((Registration)regList.get(i)).getMake() %></td>
+            <td><%= ((Registration)regList.get(i)).getModel() %></td>
+            <td><%= ((Registration)regList.get(i)).getRTOOffice() %></td> 
+            <td><%= ((Registration)regList.get(i)).getPlateNumber() %></td> 
+            <td><%= ((Registration)regList.get(i)).getStatus() %></td> 
         </tr>
       <%}%>
 </table>
