@@ -1,4 +1,4 @@
-<%@page import="com.customer.RegistrationBean"%>
+<%@page import="com.vr.model.Registration"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page session="true" %>
@@ -29,6 +29,7 @@
 </style>
 </head>
 <body>
+${isRecord}
 	<div align="center">
 		<!-- Main table -->
 		<table border = "1" width = "100%" height = "100%">
@@ -48,7 +49,7 @@
 							</td>
 						</tr>
 						<!-- Search Form-->
-						<form action="<%=request.getContextPath()%>/adminsearch" method="post">
+						<form action="${pageContext.request.contextPath}/adminHome" method="post" name="searchRegForm">
 									<tr>																						<tr>																								<tr>
 										<td>
 											<label>Status: </label>
@@ -89,7 +90,7 @@
 									<!-- Error Column-->
 									<% 
 										String showErr = "display:none";
-										java.util.List<RegistrationBean> searchRelList = (java.util.ArrayList<RegistrationBean>)session.getAttribute("searchResultList");
+										java.util.List<Registration> searchRelList = (java.util.ArrayList<Registration>)session.getAttribute("searchResultList");
 										if((searchRelList!=null) && (searchRelList.size()>0)) {
 									%>
 										<table border = "1" class="TFtable" >
@@ -106,13 +107,14 @@
 									    for(int i=0; i<searchRelList.size() ;i++){%>
 									        <tr>
 									        	<td>
-									        		<a href="<%=request.getContextPath()%>/viewrequest?requestId=<%= ((RegistrationBean)searchRelList.get(i)).getRequestId() %>"><%= ((RegistrationBean)searchRelList.get(i)).getRequestId() %></a>
+									        		<a href="${pageContext.request.contextPath}/reqValidate"><%= ((Registration)searchRelList.get(i)).getRequestId() %></a>
+									        		<input type="hidden" name ="reqId"id="reqId" value=<%= ((Registration)searchRelList.get(i)).getRequestId() %> />
 									        	</td>
-									        	<td><%= ((RegistrationBean)searchRelList.get(i)).getName() %></td>
-									        	<td><%= ((RegistrationBean)searchRelList.get(i)).getMake() %></td>
-									        	<td><%= ((RegistrationBean)searchRelList.get(i)).getModel() %></td>
-									        	<td><%= ((RegistrationBean)searchRelList.get(i)).getRTOOffice() %></td>
-									        	<td><%= ((RegistrationBean)searchRelList.get(i)).getStatus() %></td>
+									        	<td><%= ((Registration)searchRelList.get(i)).getName() %></td>
+									        	<td><%= ((Registration)searchRelList.get(i)).getMake() %></td>
+									        	<td><%= ((Registration)searchRelList.get(i)).getModel() %></td>
+									        	<td><%= ((Registration)searchRelList.get(i)).getRTOOffice() %></td>
+									        	<td><%= ((Registration)searchRelList.get(i)).getStatus() %></td>
 									        </tr>
 								      <%}%>
 										</table>									

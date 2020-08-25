@@ -1,4 +1,4 @@
-<%@page import="com.admin.ViewRequestBean"%>
+<%@page import="com.vr.model.ViewRequest"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page session="true" %>
@@ -30,7 +30,7 @@
 							</td>
 						</tr>
 						<%
-							ViewRequestBean requestBean = (ViewRequestBean)session.getAttribute("requestToShow");
+							ViewRequest requestBean = (ViewRequest)session.getAttribute("requestToShow");
 						%>
 						<!-- Form row of main table-->
 						<form action="<%=request.getContextPath()%>/requestdecision" method="post">
