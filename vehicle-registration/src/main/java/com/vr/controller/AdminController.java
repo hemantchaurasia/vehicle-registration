@@ -52,25 +52,21 @@ public class AdminController {
 		return "admin/searchRequest";
 	}
 	
-	@RequestMapping(value = "/reqValidate", method = RequestMethod.POST)
-	public String reqValidate(@RequestParam String reqId, HttpServletRequest request, HttpSession httpSession) {
+	@RequestMapping(value = "/reqValidate", method = RequestMethod.GET)
+	public String reqValidate(@RequestParam String requestId, HttpServletRequest request, HttpSession httpSession) {
 		System.out.println("------ Start newRegistration ---------");
-		System.out.println("reqID2 :::::::::::::"+request.getParameter("reqId"));
-		System.out.println("reqID2 :::::::::::::"+reqId);
-
-		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
-		System.out.println("allReqList:"+ allReqList.isEmpty());
 		
+		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
 		ViewRequest viewRequest = new ViewRequest();
 
 		try {
-			int requestId = Integer.parseInt(reqId);
-			System.out.println("requestId ::"+requestId);
+			int reqtId = Integer.parseInt(requestId);
+			System.out.println("requestId ::"+reqtId);
 			//Match the id in allRecordlist and populate the data to ViewRequestbean
 	        for (int i = 0; i < allReqList.size(); i++) {
 	        	
-	        	if((allReqList.get(i).getRequestId()== requestId)){
-	        		viewRequest.setRequestId(requestId);
+	        	if((allReqList.get(i).getRequestId()== reqtId)){
+	        		viewRequest.setRequestId(reqtId);
 	        		viewRequest.setName(allReqList.get(i).getName());
 	        		viewRequest.setAddress(allReqList.get(i).getAddress());
 	        		viewRequest.setGender(allReqList.get(i).getGender());

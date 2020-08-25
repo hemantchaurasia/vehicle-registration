@@ -107,8 +107,7 @@ ${isRecord}
 									    for(int i=0; i<searchRelList.size() ;i++){%>
 									        <tr>
 									        	<td>
-									        		<a href="${pageContext.request.contextPath}/reqValidate"><%= ((Registration)searchRelList.get(i)).getRequestId() %></a>
-									        		<input type="hidden" name ="reqId"id="reqId" value=<%= ((Registration)searchRelList.get(i)).getRequestId() %> />
+									        		<a href="${pageContext.request.contextPath}/reqValidate?requestId=<%= ((Registration)searchRelList.get(i)).getRequestId() %>"><%= ((Registration)searchRelList.get(i)).getRequestId() %></a>
 									        	</td>
 									        	<td><%= ((Registration)searchRelList.get(i)).getName() %></td>
 									        	<td><%= ((Registration)searchRelList.get(i)).getMake() %></td>
