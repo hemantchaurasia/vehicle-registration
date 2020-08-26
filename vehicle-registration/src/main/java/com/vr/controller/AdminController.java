@@ -38,23 +38,18 @@ public class AdminController {
 		try {
 			String status = search.getStatus();
 			String rtoOffice = search.getRTOOffice();
-			String isRecord = null;
 			if (allReqList != null) {
 				for (int i = 0; i < allReqList.size(); i++) {
 					if (allReqList.get(i).getStatus().equalsIgnoreCase(status) && allReqList.get(i).getRTOOffice().equalsIgnoreCase(rtoOffice)) {
 						resultList.add(allReqList.get(i));
 					}
 				}
-				
 				if(resultList.size() == 0) {
-					isRecord = "no"; 
-				}else {
-					isRecord = "yes"; 
-				}
-				 
+					model.addAttribute("isRecord", "No records found"); 
+				} 
 			}
 			httpSession.setAttribute("searchResultList", resultList);
-			model.addAttribute("isRecord", isRecord);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

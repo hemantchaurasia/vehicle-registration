@@ -27,7 +27,7 @@ public class CustomerController {
 	@RequestMapping(value = "/newRegistration", method = RequestMethod.POST)
 	public String newRegistration(@Validated Registration registration, Model model, HttpSession httpSession) {
 		try {
-			String isError = null;
+			String resMsgColor = "";
 
 			boolean formDataOk = isFormOk (registration.getName(),registration.getAddress(),
 					registration.getGender(), registration.getAge(), registration.getInsuranceNumber(),
@@ -36,13 +36,13 @@ public class CustomerController {
 			if(formDataOk) {
 				registration.setRequestId(rId++);
 				registration.setStatus("Pending");
-				isError = "noError";
-				model.addAttribute("isErr", isError);
+				model.addAttribute("resMsg", "Registration Successful");
+				model.addAttribute("resMsgColor", "yellow");
 			regList.add(registration);
 			httpSession.setAttribute("registrationList", regList);
 			} else {
-				isError = "error";
-				model.addAttribute("isErr", isError);
+				model.addAttribute("resMsg", "Invalid Input");
+				model.addAttribute("resMsgColor", "red");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

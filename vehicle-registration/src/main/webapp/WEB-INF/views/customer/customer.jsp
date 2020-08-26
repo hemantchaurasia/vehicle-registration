@@ -10,7 +10,6 @@
 	<title>Registration Form</title>
 </head>
 <body>
-Error: ${isErr}
 	<div align="center">
 		<!-- Main table -->
 		<table border = "1" width = "100%" height = "100%">
@@ -29,28 +28,10 @@ Error: ${isErr}
 								<label class="label"><h3>Registration Form</h3></label>
 							</td>
 						</tr>
-						<!-- Error Column-->
-						<%
-							String showErr = "display:none";
-							String errMessage = "";
-							String msgColor = "";
-							if (null!=request.getParameter("isErr")) {
-								showErr = "";
-								if(request.getParameter("isErr").equalsIgnoreCase("noError")){
-									errMessage = "Registration Successful";
-									msgColor = "green";
-								} else {
-									errMessage = "Invalid Input";
-									msgColor = "red";
-								}
-								
-							}
-						%>
-
 						<tr align="center">
 							<td align="center">
-							<div id="errors" style=<%=showErr%> >
-								<font color=<%=msgColor %>><b><%=errMessage %></b></font>
+							<div id="errors">
+								<font color=${resMsgColor}><b>${resMsg}</b></font>
 							</div>	
 							</td>
 						</tr>						

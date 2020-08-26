@@ -29,7 +29,6 @@
 </style>
 </head>
 <body>
-${isRecord}
 	<div align="center">
 		<!-- Main table -->
 		<table border = "1" width = "100%" height = "100%">
@@ -89,7 +88,6 @@ ${isRecord}
 								</form>
 									<!-- Error Column-->
 									<% 
-										String showErr = "display:none";
 										java.util.List<Registration> searchRelList = (java.util.ArrayList<Registration>)session.getAttribute("searchResultList");
 										if((searchRelList!=null) && (searchRelList.size()>0)) {
 									%>
@@ -115,24 +113,20 @@ ${isRecord}
 									        	<td><%= ((Registration)searchRelList.get(i)).getRTOOffice() %></td>
 									        	<td><%= ((Registration)searchRelList.get(i)).getStatus() %></td>
 									        </tr>
-								      <%}%>
-										</table>									
-									<%
+								      <%
+								      		}
 										}
-										if (null!=request.getParameter("isRecord")) {
-											showErr = "";
-											if ((request.getParameter("isRecord").equalsIgnoreCase("yes"))){
-												showErr = "display:none";
-											}
-										}
-									%>
-									<tr align="center">
+								      %>
+								      <table>
+								      <tr align="center">
 										<td align="center">
-											<div id="errors" style=<%=showErr%> >
-												<font color="red"><b>No records found</b></font>
+											<div id="errors" >
+												<font color="red"><b>${isRecord}</b></font>
 											</div>
 										</td>
-									</tr>			
+									</tr>
+									</table>
+							</table>									
 					</table>
 				</td>
 			</tr>
