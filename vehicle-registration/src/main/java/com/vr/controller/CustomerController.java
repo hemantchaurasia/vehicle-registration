@@ -19,9 +19,13 @@ public class CustomerController {
 	List<Registration> regList = new ArrayList<Registration>();
 	int rId = 100000;
 	
+	@RequestMapping(value = "/newRegistration", method = RequestMethod.GET)
+	public String newRegistration2(@Validated Registration registration, Model model, HttpSession httpSession) {
+		return "customer/customer";
+	}
+
 	@RequestMapping(value = "/newRegistration", method = RequestMethod.POST)
 	public String newRegistration(@Validated Registration registration, Model model, HttpSession httpSession) {
-		System.out.println("------ Start newRegistration ---------");
 		try {
 			String isError = null;
 
@@ -43,7 +47,6 @@ public class CustomerController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("------ End newRegistration ---------");
 		return "customer/customer";
 	}
 	

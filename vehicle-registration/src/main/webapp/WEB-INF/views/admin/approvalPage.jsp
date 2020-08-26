@@ -33,7 +33,7 @@
 							ViewRequest requestBean = (ViewRequest)session.getAttribute("requestToShow");
 						%>
 						<!-- Form row of main table-->
-						<form action="<%=request.getContextPath()%>/requestdecision" method="post">
+						<form action="${pageContext.request.contextPath}/reqDecision" method="post">
 						<tr>
 							<td>
 								<table>

@@ -13,16 +13,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.vr.model.Search;
 import com.vr.model.Registration;
+import com.vr.model.Search;
 import com.vr.model.ViewRequest;
 
 @Controller
 public class AdminController {
 	
+	public int plateNoTN = 1000;
+	public int plateNoDL = 1000;
+	public int plateNoMH = 1000;
+	public int plateNoAP = 1000;
+	public int plateNoKA = 1000;
+
+	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
+	public String adminHome1() {
+		return "admin/searchRequest";
+	}
+	
 	@RequestMapping(value = "/adminHome", method = RequestMethod.POST)
 	public String adminHome(@Validated Search search, Model model, HttpSession httpSession) {
-		System.out.println("------ Start newRegistration ---------");
 		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
 		List<Registration> resultList = new ArrayList<Registration>();
 		try {
@@ -48,21 +58,18 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("------ End newRegistration ---------");
 		return "admin/searchRequest";
 	}
 	
 	@RequestMapping(value = "/reqValidate", method = RequestMethod.GET)
-	public String reqValidate(@RequestParam String requestId, HttpServletRequest request, HttpSession httpSession) {
-		System.out.println("------ Start newRegistration ---------");
-		
+	public String reqValidate(@RequestParam String requestId, HttpSession httpSession) {
 		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
 		ViewRequest viewRequest = new ViewRequest();
 
 		try {
 			int reqtId = Integer.parseInt(requestId);
 			System.out.println("requestId ::"+reqtId);
-			//Match the id in allRecordlist and populate the data to ViewRequestbean
+			//Match the id in allRecordlist and populate the data to ViewRequestBean
 	        for (int i = 0; i < allReqList.size(); i++) {
 	        	
 	        	if((allReqList.get(i).getRequestId()== reqtId)){
@@ -83,13 +90,78 @@ public class AdminController {
 	        			viewRequest.setButtonStatus("disabled");
 	        		}
 	        	}
-	            
 	        }
 	        httpSession.setAttribute("requestToShow", viewRequest);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("------ End newRegistration ---------");
 		return "admin/approvalPage";
 	}
+	
+	@RequestMapping(value = "/reqDecision", method = RequestMethod.POST)
+	public String reqDecision(HttpServletRequest request, HttpSession httpSession) {
+		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
+		//System.out.println("allReqList:"+ allReqList.isEmpty());
+		ViewRequest viewRequest = (ViewRequest)httpSession.getAttribute("requestToShow");
+		try {
+			
+			if(request.getParameter("approve") != null) {
+				String nPlate = null;
+				for(int i=0; i<allReqList.size(); i++) {
+					if(allReqList.get(i).getRequestId()==viewRequest.getRequestId()) {
+						nPlate = numberPlate(viewRequest.getRTOOffice());
+						allReqList.get(i).setPlateNumber(nPlate);
+						allReqList.get(i).setStatus("Approved");
+					}
+				}
+				viewRequest.setStatus("Approved");
+				viewRequest.setPlateNumber(nPlate);
+				viewRequest.setButtonStatus("disabled");
+				
+			}else if(request.getParameter("reject") != null) {
+				for(int i=0; i<allReqList.size(); i++) {
+					if(allReqList.get(i).getRequestId()==viewRequest.getRequestId()) {
+						allReqList.get(i).setPlateNumber("-");
+						allReqList.get(i).setStatus("Rejected");
+					}
+				}
+				viewRequest.setPlateNumber("-");
+				viewRequest.setStatus("Rejected");
+				viewRequest.setButtonStatus("disabled");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "admin/approvalPage";
+	}
+	
+	
+//Method to generate the Number Plate 	
+	public String numberPlate(String RTOOffice) {
+		String numberPlate = null;
+		if(RTOOffice.equalsIgnoreCase("chennai")) {
+			String shortCode = "TN";
+			String RTOOfficeCode = "11";
+			numberPlate = shortCode + "-" + RTOOfficeCode + "-" + ++plateNoTN;
+		}else if(RTOOffice.equalsIgnoreCase("hyderabad")) {
+			String shortCode = "AP";
+			String RTOOfficeCode = "42";
+			numberPlate = shortCode + "-" + RTOOfficeCode + "-" + ++plateNoAP;
+		}else if(RTOOffice.equalsIgnoreCase("delhi")) {
+			String shortCode = "DL";
+			String RTOOfficeCode = "03";
+			numberPlate = shortCode + "-" + RTOOfficeCode + "-" + ++plateNoDL;
+		}else if(RTOOffice.equalsIgnoreCase("pune")) {
+			String shortCode = "MH";
+			String RTOOfficeCode = "54";
+			numberPlate = shortCode + "-" + RTOOfficeCode + "-" + ++plateNoMH;
+		}else if(RTOOffice.equalsIgnoreCase("bangalore")) {
+			String shortCode = "KA";
+			String RTOOfficeCode = "15";
+			numberPlate = shortCode + "-" + RTOOfficeCode + "-" + ++plateNoKA;
+		}
+		return numberPlate;
+	}
+
+
 }
