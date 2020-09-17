@@ -1,11 +1,18 @@
 package com.vr.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.vr.model.Login;
 
@@ -23,20 +30,23 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	public String userLogin(@Validated Login login, Model model) {
-
-		if (login.getUserID().equals("admin123") && login.getPassword().equals("admin123")) {
-			model.addAttribute("userID", login.getUserID());
-			model.addAttribute("password", login.getPassword());
-			return "admin/searchRequest";
-		} else if (login.getUserID().equals("customer") && login.getPassword().equals("customer123")) {
-			model.addAttribute("userID", login.getUserID());
-			model.addAttribute("password", login.getPassword());
-			return "customer/customer";
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView userLogin(@Validated Login login, Model model, HttpServletRequest request) {
+		String userName = request.getParameter("userID");
+		String password = request.getParameter("password");
+		if (userName.equals("admin123") && password.equals("admin123")) {
+			//model.addAttribute("userID", login.getUserID());
+			//model.addAttribute("password", login.getPassword());
+			//return "admin/searchRequest";
+			return new ModelAndView("redirect:/adminHome");
+		} else if (userName.equals("customer") && password.equals("customer123")) {
+			//model.addAttribute("userID", login.getUserID());
+			//model.addAttribute("password", login.getPassword());
+			return new ModelAndView("redirect:/newRegistration");
 		} else {
 			model.addAttribute("ErrMsg", "Invalid Input");
-			return "login";
+			//request.setAttribute("ErrMsg", "Invalid Input");
+			return new ModelAndView("redirect:/login");
 		}
 	}
 }

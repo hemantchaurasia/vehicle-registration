@@ -18,10 +18,10 @@
 <body>
 	<div align="center">
 		<h1>Login</h1></br>
-		
-		<font color="red"><b>${ErrMsg}</b></font>
-
-		<form action="${pageContext.request.contextPath}/userLogin" method="post" name="loginForm">
+		<% if(request.getParameter("ErrMsg")!=null){ %>
+			<font color="red"><b><%= request.getParameter("ErrMsg") %></b></font>
+		<%} %>
+		<form action="${pageContext.request.contextPath}/login" method="post" name="loginForm">
 			<table style="with: 100%">
 				<tr>
 					<td>User ID</td>
@@ -48,7 +48,6 @@
 					<td><input type="submit" id="login" value="Login" class="formButtons"/></td>
 				</tr>
 			</table>
-			
 		</form>
 	</div>
 </body>
