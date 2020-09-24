@@ -11,6 +11,14 @@
 </head>
 <body>
 	<div align="center">
+	<!-- Page header-->
+		<table>
+			<tr align="center">
+				<td align="center">
+					<%@ include file="header.jsp" %>
+				</td>
+			</tr>
+		</table>
 		<!-- Main table -->
 		<table border = "1" width = "100%" height = "100%">
 			<tr>
@@ -82,11 +90,11 @@
 													</td>
 													<td>
 														<select name="RTOOffice" id="RTOOffice" >
-															  <option value="chennai">Chennai</option>
-															  <option value="hyderabad">Hyderabad</option>
-															  <option value="delhi">Delhi</option>
-															  <option value="pune">Pune</option>
-															  <option value="bangalore">Bangalore</option>
+															  <option id="RTOOffice0" value="chennai">Chennai</option>
+															  <option id="RTOOffice1" value="hyderabad">Hyderabad</option>
+															  <option id="RTOOffice2" value="delhi">Delhi</option>
+															  <option id="RTOOffice3" value="pune">Pune</option>
+															  <option id="RTOOffice4" value="bangalore">Bangalore</option>
 														</select>
 													</td>
 												</tr>
@@ -109,10 +117,10 @@
 													</td>
 													<td>
 														<select name="vehicleType" id="vehicleType" >
-															  <option value="twowheeler">Two wheeler</option>
-															  <option value="fourwheeler">Four wheeler</option>
-															  <option value="threewheeler">Three wheeler</option>
-															  <option value="heavyvehicle">Heavy vehicle</option>
+															  <option id="vehicleType0" value="twowheeler">Two wheeler</option>
+															  <option id="vehicleType1" value="fourwheeler">Four wheeler</option>
+															  <option id="vehicleType2" value="threewheeler">Three wheeler</option>
+															  <option id="vehicleType3" value="heavyvehicle">Heavy vehicle</option>
 														</select>
 													</td>
 												</tr>

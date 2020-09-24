@@ -12,8 +12,8 @@
 	<table width="100%" height="100%">
 		<tr align="right">
 			<td valign="top">
-				<input type="submit" name="" value="Home" onclick="location.href='${pageContext.request.contextPath}/adminHome/'" class="leftNavButtons"></br>
-				<input type="submit" name="" value="Logout" onclick="location.href='${pageContext.request.contextPath}/login/'" class="leftNavButtons">
+				<a href="${pageContext.request.contextPath}/adminHome/">Home</a></br>
+				<a href="${pageContext.request.contextPath}/login/">Logout</a>
 			</td>
 		</tr>												
 	</table>

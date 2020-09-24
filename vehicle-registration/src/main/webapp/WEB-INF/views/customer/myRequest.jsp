@@ -12,6 +12,14 @@
 </head>
 <body>
 	<div align="center">
+	<!-- Page header-->
+		<table>
+			<tr align="center">
+				<td align="center">
+					<%@ include file="header.jsp" %>
+				</td>
+			</tr>
+		</table>
 		<!-- Main table -->
 		<table border = "1" width = "100%" height = "100%">
 			<tr>
@@ -37,7 +45,7 @@
 						<%
 							if(regList2==null){
 						%>
-						<div id="error">
+						<div id="errors">
 							<table>
 								<tr align="center">
 									<td align="center">

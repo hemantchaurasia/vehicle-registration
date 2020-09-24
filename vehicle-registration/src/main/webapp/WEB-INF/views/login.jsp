@@ -19,12 +19,16 @@
 	<div align="center">
 		<h1>Login</h1></br>
 		<% if(request.getParameter("ErrMsg")!=null){ %>
-			<font color="red"><b><%= request.getParameter("ErrMsg") %></b></font>
+			<div id="errors">
+				<font color="red"><b><%= request.getParameter("ErrMsg") %></b></font>
+			</div>
 		<%} %>
 		<form action="${pageContext.request.contextPath}/login" method="post" name="loginForm">
 			<table style="with: 100%">
 				<tr>
-					<td>User ID</td>
+					<td>
+						<label>User ID</label>
+					</td>
 					<td><input type="text" id="userID" name="userID" maxlength="16" /></td>
 				</tr>
 				<tr>
@@ -32,7 +36,9 @@
 					<td></td>
 				</tr>				
 				<tr>
-					<td>Password</td>
+					<td>
+						<label>Password</label>
+					</td>
 					<td><input type="password" id="password" name="password" maxlength="16" /></td>
 				</tr>
 				<tr>

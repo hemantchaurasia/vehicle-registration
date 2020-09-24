@@ -8,7 +8,7 @@
 	<meta charset="ISO-8859-1">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<title>Insert title here</title>
+	<title>My Requests</title>
 	<style type="text/css">
 		.TFtable{
 			width:100%; 
@@ -49,15 +49,31 @@
 			<th>Status</th>
 		</tr>
     <%
-    for(int i=0; i<regList.size();i++){%>
+    for(int i=0; i<regList.size();i++){
+    int j=1;
+    %>
         <tr>
-        	<td><%= ((Registration)regList.get(i)).getRequestId() %></td>
-       		<td><%= ((Registration)regList.get(i)).getName() %></td>
-            <td><%= ((Registration)regList.get(i)).getMake() %></td>
-            <td><%= ((Registration)regList.get(i)).getModel() %></td>
-            <td><%= ((Registration)regList.get(i)).getRTOOffice() %></td> 
-            <td><%= ((Registration)regList.get(i)).getPlateNumber() %></td> 
-            <td><%= ((Registration)regList.get(i)).getStatus() %></td> 
+        	<td>
+        		<input type="text" id="requestId<%=j++%>" value=<%= ((Registration)regList.get(i)).getRequestId() %> readonly="readonly" />
+        	</td>
+        	<td>
+        		<input type="text" id="name<%=j++%>" value=<%= ((Registration)regList.get(i)).getName() %> readonly="readonly" />
+        	</td>
+        	<td>
+        		<input type="text" id="make<%=j++%>" value=<%= ((Registration)regList.get(i)).getMake() %> readonly="readonly" />
+        	</td>
+        	<td>
+        		<input type="text" id="model<%=j++%>" value=<%= ((Registration)regList.get(i)).getModel() %> readonly="readonly" />
+        	</td> 
+        	<td>
+        		<input type="text" id="RTOOffice<%=j++%>" value=<%= ((Registration)regList.get(i)).getRTOOffice() %> readonly="readonly" />
+        	</td>
+        	<td>
+        		<input type="text" id="plateNo<%=j++%>" value=<%= ((Registration)regList.get(i)).getPlateNumber() %> readonly="readonly" />
+        	</td>  
+        	<td>
+        		<input type="text" id="status<%=j++%>" value=<%= ((Registration)regList.get(i)).getStatus() %> readonly="readonly" />
+        	</td>  
         </tr>
       <%}%>
 </table>
