@@ -40,39 +40,40 @@
 	</table>
 	<table border = "1" class="TFtable">
 		<tr>
-			<th>Request ID</th>
-			<th>Name</th>
-			<th>Make</th>
-			<th>Model</th>
-			<th>RTO Office</th>
-			<th>Plate Number</th>
-			<th>Status</th>
+			<th><label>Request ID</label></th>
+			<th><label>Name</label></th>
+			<th><label>Make</label></th>
+			<th><label>Model</label></th>
+			<th><label>RTO Office</label></th>
+			<th><label>Plate Number</label></th>
+			<th><label>Status</label></th>
 		</tr>
     <%
+    int j=0;
     for(int i=0; i<regList.size();i++){
-    int j=1;
+    	j++;
     %>
         <tr>
         	<td>
-        		<input type="text" id="requestId<%=j++%>" value=<%= ((Registration)regList.get(i)).getRequestId() %> readonly="readonly" />
+        		<input type="text" id="requestId<%=j%>" value=<%= ((Registration)regList.get(i)).getRequestId() %> readonly="readonly" />
         	</td>
         	<td>
-        		<input type="text" id="name<%=j++%>" value=<%= ((Registration)regList.get(i)).getName() %> readonly="readonly" />
+        		<input type="text" id="name<%=j%>" value=<%= ((Registration)regList.get(i)).getName() %> readonly="readonly" />
         	</td>
         	<td>
-        		<input type="text" id="make<%=j++%>" value=<%= ((Registration)regList.get(i)).getMake() %> readonly="readonly" />
+        		<input type="text" id="make<%=j%>" value=<%= ((Registration)regList.get(i)).getMake() %> readonly="readonly" />
         	</td>
         	<td>
-        		<input type="text" id="model<%=j++%>" value=<%= ((Registration)regList.get(i)).getModel() %> readonly="readonly" />
+        		<input type="text" id="model<%=j%>" value=<%= ((Registration)regList.get(i)).getModel() %> readonly="readonly" />
         	</td> 
         	<td>
-        		<input type="text" id="RTOOffice<%=j++%>" value=<%= ((Registration)regList.get(i)).getRTOOffice() %> readonly="readonly" />
+        		<input type="text" id="RTOOffice<%=j%>" value=<%= ((Registration)regList.get(i)).getRTOOffice() %> readonly="readonly" />
         	</td>
         	<td>
-        		<input type="text" id="plateNo<%=j++%>" value=<%= ((Registration)regList.get(i)).getPlateNumber() %> readonly="readonly" />
+        		<input type="text" id="plateNo<%=j%>" value=<%= ((Registration)regList.get(i)).getPlateNumber() %> readonly="readonly" />
         	</td>  
         	<td>
-        		<input type="text" id="status<%=j++%>" value=<%= ((Registration)regList.get(i)).getStatus() %> readonly="readonly" />
+        		<input type="text" id="status<%=j%>" value=<%= ((Registration)regList.get(i)).getStatus() %> readonly="readonly" />
         	</td>  
         </tr>
       <%}%>

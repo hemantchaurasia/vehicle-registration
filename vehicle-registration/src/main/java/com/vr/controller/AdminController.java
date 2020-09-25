@@ -60,7 +60,7 @@ public class AdminController {
 	public String reqValidate(@RequestParam String requestId, HttpSession httpSession) {
 		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
 		ViewRequest viewRequest = new ViewRequest();
-
+		
 		try {
 			int reqtId = Integer.parseInt(requestId);
 			System.out.println("requestId ::"+reqtId);
@@ -94,9 +94,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/reqDecision", method = RequestMethod.POST)
-	public String reqDecision(HttpServletRequest request, HttpSession httpSession) {
+	public String reqDecision(HttpServletRequest request, Model model, HttpSession httpSession) {
 		List<Registration> allReqList = (List<Registration>) httpSession.getAttribute("registrationList");
-		//System.out.println("allReqList:"+ allReqList.isEmpty());
+		String ErrMsg = "";
 		ViewRequest viewRequest = (ViewRequest)httpSession.getAttribute("requestToShow");
 		try {
 			
@@ -109,6 +109,8 @@ public class AdminController {
 						allReqList.get(i).setStatus("Approved");
 					}
 				}
+        		ErrMsg = "Request Processed Successfully";
+        		model.addAttribute("resMsg", ErrMsg);
 				viewRequest.setStatus("Approved");
 				viewRequest.setPlateNumber(nPlate);
 				viewRequest.setButtonStatus("disabled");
@@ -120,6 +122,8 @@ public class AdminController {
 						allReqList.get(i).setStatus("Rejected");
 					}
 				}
+        		ErrMsg = "Request Processed Successfully";
+        		model.addAttribute("resMsg", ErrMsg);
 				viewRequest.setPlateNumber("-");
 				viewRequest.setStatus("Rejected");
 				viewRequest.setButtonStatus("disabled");

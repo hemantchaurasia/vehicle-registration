@@ -101,25 +101,38 @@
 									%>
 										<table border = "1" class="TFtable" >
 											<tr class="tableHeader">
-												<th>Request ID</th>
-												<th>Name</th>
-												<th>Make</th>
-												<th>Model</th>
-												<th>RTO Office</th>
-												<th>Status</th>
+												<th><label>Request ID</label></th>
+												<th><label>Name</label></th>
+												<th><label>Make</label></th>
+												<th><label>Model</label></th>
+												<th><label>RTO Office</label></th>
+												<th><label>Status</label></th>
 											</tr>
 											 
 									    <%
-									    for(int i=0; i<searchRelList.size() ;i++){%>
+									    int j = 0;
+									    for(int i=0; i<searchRelList.size() ;i++){
+									    	j++;
+									    %>
 									        <tr>
 									        	<td>
 									        		<a href="${pageContext.request.contextPath}/reqValidate?requestId=<%= ((Registration)searchRelList.get(i)).getRequestId() %>"><%= ((Registration)searchRelList.get(i)).getRequestId() %></a>
 									        	</td>
-									        	<td><%= ((Registration)searchRelList.get(i)).getName() %></td>
-									        	<td><%= ((Registration)searchRelList.get(i)).getMake() %></td>
-									        	<td><%= ((Registration)searchRelList.get(i)).getModel() %></td>
-									        	<td><%= ((Registration)searchRelList.get(i)).getRTOOffice() %></td>
-									        	<td><%= ((Registration)searchRelList.get(i)).getStatus() %></td>
+									        	<td>
+									        		<input type="text" id="name<%=j%>" value=<%= ((Registration)searchRelList.get(i)).getName() %> readonly="readonly" />
+									        	</td>
+									        	<td>
+									        		<input type="text" id="make<%=j%>" value=<%= ((Registration)searchRelList.get(i)).getMake() %> readonly="readonly" />
+									        	</td>
+									        	<td>
+									        		<input type="text" id="model<%=j%>" value=<%= ((Registration)searchRelList.get(i)).getModel() %> readonly="readonly" />
+									        	</td>
+									        	<td>
+									        		<input type="text" id="RTOOffice<%=j%>" value=<%= ((Registration)searchRelList.get(i)).getRTOOffice() %> readonly="readonly" />
+									        	</td>
+									        	<td>
+									        		<input type="text" id="status<%=j%>" value=<%= ((Registration)searchRelList.get(i)).getStatus() %> readonly="readonly" />
+									        	</td>
 									        </tr>
 								      <%
 								      		}

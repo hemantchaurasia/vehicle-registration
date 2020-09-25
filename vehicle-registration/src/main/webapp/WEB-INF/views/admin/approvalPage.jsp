@@ -8,7 +8,7 @@
 	<meta charset="ISO-8859-1">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<title>Registration admin approval page</title>
+	<title>View Request Page</title>
 </head>
 <body>
 	<div align="center">
@@ -37,6 +37,13 @@
 								<label class="label"><h3>Registration Form</h3></label>
 							</td>
 						</tr>
+						<tr align="center">
+							<td align="center">
+							<div id="errors">
+								<font color="yellow"><b>${resMsg}</b></font>
+							</div>	
+							</td>
+						</tr>						
 						<%
 							ViewRequest requestBean = (ViewRequest)session.getAttribute("requestToShow");
 						%>
