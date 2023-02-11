@@ -1,3 +1,5 @@
-# vehicle-registration: springmvc, JSP, JQuery & Maven project
+# vehicle-registration
 
-vehicle-registration: springmvc, JSP, JQuery & Maven project
+## Spring MVC, JSP, JQuery & Maven project
+
+Vehicle-registration 
